@@ -1,0 +1,28 @@
+반도체 제조에서 TSV 에칭(Through Silicon Via Etch)공정은 웨이퍼 기판에 깊은 마이크로 홀을 만드
+는 공정으로, 수십회의 에칭 작업을 반복하여 홀을 점진적으로 형성해 나간다. 1회 에칭 사이
+클은 홀을 뚫는 Etch step과 벽면을 안정화하는 Passivation step으로 구성되고 이런 사이클을 반복한
+다.
+
+에칭 설비와 광학장비인 OES(Optical Emission Spectroscopy)장비는
+에칭 공정이 진행되는 동안 산출물 원소의 에너지를 파장 형태로 기록하는 장비로 원소별로 특화된
+파장의 에너지(intensity)를 가공시간동안 모니터링한다.
+
+웨이피 에칭동안 수집되는 파장의 스팩트럼은 162.969nm – 1017.36nm (3,648 indices)이며, 50회의
+사이클을 반복한다. 데이터셋은 두개로 직경 80um와 25um 홀을 만든 결과이며 각 데이터셋마다 17
+개 웨이퍼의 OES 데이터(X에 해당)와 홀의 깊이(Depth로 Y에 해당)가 존재한다. 또한 각 웨이퍼는
+OES 데이터뿐만 아니라 공정을 수행할 때 투입되는 레시피 파라미터를 모니터링한 데이터(Tool Data
+로 X에 해당)도 있다. 한편 참고로 17개의 웨이퍼중에서 12개는 정상적으로 진행된 데이터이며 5개는
+비정상적으로 진행된 데이터이다
+
+데이터를 정리하면 다음과 같다.
+데이터셋1 (80um 에칭): 12개의 정상 데이터, 5개의 비정상 데이터
+X: OES와 Tool Data (모두 시계열 형식), Y: 공정결과인 홀의 깊이
+데이터셋2 (25um 에칭): 12개의 정상 데이터, 5개의 비정상 데이터
+X: OES와 Tool Data (모두 시계열 형식), Y: 공정결과인 홀의 깊이
+
+Method : 
+1. Unfolding
+2-1. (Kernel)PCA -> PCR
+2-2. Gaussian Process Regression
+3-4. PLS
+Validation : Leave one out cross Validation (R2, MAE, MAPE)
